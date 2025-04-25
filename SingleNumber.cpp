@@ -1,5 +1,4 @@
 #include <iostream>
-#include <unordered_map>
 using namespace std;
 
 class Solution
@@ -8,20 +7,12 @@ public:
     int singleNumber(vector<int> &nums)
     {
         int n = nums.size();
-        unordered_map<int, int> freq;
+        int result = 0;
 
-        for (int i = 0; i < n; i++)
+        for (auto elem : nums)
         {
-            freq[nums[i]]++;
+            result ^= elem;
         }
-
-        for (auto elem : freq)
-        {
-            if (elem.second == 1)
-            {
-                return elem.first;
-            }
-        }
-        return 0;
+        return result;
     }
 };
